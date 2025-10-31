@@ -38,11 +38,11 @@ static void dumpVARP(VARP var) {
     auto size = static_cast<int>(var->getInfo()->size);
     auto ptr = var->readMap<float>();
     printf("[ ");
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < std::min(5, size); i++) {
         printf("%f, ", ptr[i]);
     }
     printf("... ");
-    for (int i = size - 5; i < size; i++) {
+    for (int i = std::max(0, size - 5); i < size; i++) {
         printf("%f, ", ptr[i]);
     }
     printf(" ]\n");
